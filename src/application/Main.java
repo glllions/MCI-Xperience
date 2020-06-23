@@ -9,13 +9,13 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 1920, 1080));
+        MainFXMLController.setMainFXMLChild("/login/login.fxml");
+        primaryStage.setTitle("Tokensystem");
+        primaryStage.setScene(new Scene(root, 1600, 900));
         primaryStage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);

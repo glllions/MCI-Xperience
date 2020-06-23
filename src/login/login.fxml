@@ -3,23 +3,32 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.LoginFXMLController">
-   <children>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
-         <children>
-            <ImageView fx:id="imageViewLogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <VBox alignment="CENTER" maxWidth="-Infinity" prefWidth="200.0" spacing="10.0">
-               <children>
-                  <TextField />
-                  <PasswordField />
-                  <Button fx:id="buttonLogin" mnemonicParsing="false" onAction="#handleButtonLogin" text="Login" />
-               </children>
-            </VBox>
-         </children>
-      </VBox>
-   </children>
+<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           xmlns="http://javafx.com/javafx/8.0.192" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="login.LoginFXMLController">
+    <children>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+            <children>
+                <ImageView fx:id="imageViewLogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../resource/image_th_koeln_logo.png"/>
+                    </image>
+                </ImageView>
+                <VBox alignment="CENTER" maxWidth="-Infinity" prefWidth="200.0" spacing="10.0">
+                    <children>
+                        <TextField fx:id="textFieldUsername" promptText="Username"/>
+                        <PasswordField promptText="Password"/>
+                        <Button fx:id="buttonLogin" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false"
+                                onAction="#handleButtonLogin" text="Login"/>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
 </StackPane>

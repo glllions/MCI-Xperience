@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardFXMLController">
+    <children>
+      <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0">
+         <children>
+                <HBox alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" spacing="20.0" VBox.vgrow="NEVER">
+                    <children>
+                        <ImageView fitHeight="75.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../resource/image_th_koeln_logo.png" />
+                            </image>
+                        </ImageView>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Tokensystem" HBox.hgrow="ALWAYS">
+                            <font>
+                                <Font name="System Bold" size="36.0" />
+                            </font>
+                        </Label>
+                        <VBox alignment="CENTER">
+                            <children>
+                                <Label text="Eingeloggt als:" />
+                                <TextField fx:id="textFieldUsername" editable="false" text="Username" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            <Separator prefWidth="200.0" />
+            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+               <children>
+                  <StackPane fx:id="stackPaneContent" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <StackPane.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="70.0" />
+                     </StackPane.margin></StackPane>
+                  <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <children>
+                        <VBox fx:id="vBoxNavigatorComplete" maxHeight="-Infinity" spacing="10.0" style="-fx-border-image-width: 1; -fx-background-color: white;">
+                           <children>
+                              <HBox focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0" VBox.vgrow="NEVER">
+                                 <children>
+                                    <Button fx:id="buttonBack" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonBack" prefHeight="54.0" prefWidth="54.0" HBox.hgrow="NEVER" />
+                                    <Button fx:id="buttonNavigator" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonNavigator" prefHeight="54.0" prefWidth="54.0" HBox.hgrow="NEVER" />
+                                 </children>
+                              </HBox>
+                              <VBox fx:id="vBoxNavigator" maxHeight="1.7976931348623157E308" maxWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Separator prefWidth="200.0">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Separator>
+                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonPersons" text="Personen" />
+                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonRooms" text="Räume" />
+                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonTransponders" text="Transponder" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <HBox alignment="TOP_RIGHT" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                           <children>
+                              <TextField fx:id="textFieldSearch" maxWidth="200.0" promptText="Suche..." />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </StackPane>
+         </children>
+      </VBox>
+    </children>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+</StackPane>
