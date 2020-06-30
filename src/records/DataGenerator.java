@@ -48,8 +48,6 @@ public class DataGenerator {
     //TODO: Put here some more Random Generation Functions
 
 
-  
-    Name name = new Name(getMeSomeRandomNames().getForename(), getMeSomeRandomNames().getSurename());
 
     public int createRandomRoomNumber(){
         int number = random.nextInt(100);
@@ -62,6 +60,7 @@ public class DataGenerator {
     }
 
     public User getMeSomeRandomDozent(){
+        Name name = new Name(getMeSomeRandomNames().getForename(), getMeSomeRandomNames().getSurename());
         String pname=("Prof."+ name.getForename()+name.getSurename());
         User user = new User(pname);
         return user;
