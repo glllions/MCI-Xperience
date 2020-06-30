@@ -62,7 +62,7 @@ public class DataGenerator {
     public User getMeSomeRandomDozent(){
         Name name = new Name(getMeSomeRandomNames().getForename(), getMeSomeRandomNames().getSurename());
         String pname=("Prof."+ name.getForename()+name.getSurename());
-        User user = new User(pname);
+        User user = new User(pname,"123");
         return user;
     }
 

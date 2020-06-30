@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import login.LoginData;
 
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -28,6 +29,9 @@ public class DashboardFXMLController {
     @FXML
     private TextField textFieldSearch;
 
+    @FXML
+    private TextField textFieldUsername;
+
     private static StackPane staticStackPaneContent;
 
     static void setDashboardFXMLChild(String path) {
@@ -42,6 +46,7 @@ public class DashboardFXMLController {
     @FXML
     private void initialize() {
         staticStackPaneContent = stackPaneContent;
+        textFieldUsername.setText(LoginData.getLoggedInUser().getName());
         switchNavigator();
     }
 
