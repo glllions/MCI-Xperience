@@ -3,14 +3,13 @@ package records;
 
 public class Room {
 
-    private int number;
-    private String name;
-    private User user;
+    private double number;
+    private String gebaeude;
 
 
-    public Room(int nnumber, String nname, User nuser){
-        this.name= nname;
+
+    public Room(double nnumber, String gebaeude){
         this.number= nnumber;
-        this.user= nuser;
+        this.gebaeude= gebaeude;
     }
 }

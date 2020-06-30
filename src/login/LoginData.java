@@ -11,7 +11,8 @@ public class LoginData {
 
     private static List<User> users = Arrays.asList(
             new User("Student", "123"),
-            new User("Pförtner", "123")
+            new User("Pförtner", "123"),
+            new User("Dozent", "123")
     );
 
     public static List<User> getUsers() {
