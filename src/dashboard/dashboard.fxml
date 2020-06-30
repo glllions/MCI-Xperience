@@ -49,8 +49,25 @@
                            <children>
                               <HBox focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0" VBox.vgrow="NEVER">
                                  <children>
-                                    <Button fx:id="buttonBack" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonBack" prefHeight="54.0" prefWidth="54.0" HBox.hgrow="NEVER" />
-                                    <Button fx:id="buttonNavigator" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonNavigator" prefHeight="54.0" prefWidth="54.0" HBox.hgrow="NEVER" />
+                                    <Button fx:id="buttonBack" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonBack" prefHeight="54.0" prefWidth="54.0" HBox.hgrow="NEVER">
+                                       <graphic>
+                                          <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../resource/back.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic></Button>
+                                    <Button fx:id="buttonNavigator" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonNavigator" prefHeight="54.0" prefWidth="54.0" HBox.hgrow="NEVER">
+                                       <graphic>
+                                          <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../resource/list.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <opaqueInsets>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </opaqueInsets></Button>
                                  </children>
                               </HBox>
                               <VBox fx:id="vBoxNavigator" maxHeight="1.7976931348623157E308" maxWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
