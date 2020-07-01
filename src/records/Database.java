@@ -12,9 +12,9 @@ public class Database {
      * @param myDummyUserData HashMap aller Dummy User im System
      * @return HashMap aller Dummy Räume Key= Raumnummer, Value = Room Instanz
      */
-    public HashMap<Integer, Room> createMyDummyRoomData(int amountOfDummys, DataGenerator myDummyDataGenerator, User myDummyUserData){
+    public HashMap<Double, Room> createMyDummyRoomData(int amountOfDummys, DataGenerator myDummyDataGenerator, User myDummyUserData){
         //Dummy Database
-        HashMap<Integer, Room> myRoomDummyDataBase = new HashMap<>();
+        HashMap<Double, Room> myRoomDummyDataBase = new HashMap<>();
         //Anzahl der Dummys die erzeugt werden sollen
         int amountOfRoomDummys = amountOfDummys;
 
@@ -22,14 +22,17 @@ public class Database {
         for(int i = 0; i < amountOfRoomDummys; i++){
 
             //Dummy Daten generieren
-            int randomRoomNumber = myDummyDataGenerator.createRandomRoomNumber();
+            double randomRoomNumber = myDummyDataGenerator.createRandomRoomNumber();
             String randomRoomName = myDummyDataGenerator.createRandomRoomName();
             User randomOwner = myDummyDataGenerator.getMeSomeRandomDozent();
 
            // Random Room der Dummy-Datenbank hinzufügen.
-            Room randomRoom = new Room(randomRoomNumber, randomRoomName, randomOwner);
+            Room randomRoom = new Room(randomRoomNumber, randomRoomName);
             myRoomDummyDataBase.put(randomRoomNumber, randomRoom);
         }
         return myRoomDummyDataBase;
     }
+
+
+
 }
