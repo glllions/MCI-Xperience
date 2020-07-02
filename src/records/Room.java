@@ -1,15 +1,24 @@
 package records;
 
 
+import javafx.beans.property.*;
+
 public class Room {
 
-    private double number;
-    private String gebaeude;
+    private IntegerProperty numberProperty = new SimpleIntegerProperty();
+    private ObjectProperty<Building> buildingProperty = new SimpleObjectProperty();
 
 
+    public Room(int number, Building building) {
+        this.numberProperty.setValue(number);
+        this.buildingProperty.setValue(building);
+    }
 
-    public Room(double nnumber, String gebaeude){
-        this.number= nnumber;
-        this.gebaeude= gebaeude;
+    public IntegerProperty numberProperty() {
+        return numberProperty;
+    }
+
+    public ObjectProperty<Building> buildingProperty() {
+        return buildingProperty;
     }
 }

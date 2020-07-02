@@ -12,6 +12,8 @@ import javafx.scene.layout.VBox;
 
 public class LoginFXMLController {
 
+    private boolean instantLogin = true;
+
     @FXML
     private StackPane root;
 
@@ -37,14 +39,14 @@ public class LoginFXMLController {
     private void handleButtonLogin(ActionEvent event) {
 
         boolean correctLogin = LoginData.getUsers().stream().anyMatch(user -> {
-            if (textFieldUsername.getText().equals(user.getName()) && passwordFieldPassword.getText().equals(user.getPassword())) {
+            if (textFieldUsername.getText().equals(user.getUsername()) && passwordFieldPassword.getText().equals(user.getPassword())) {
                 LoginData.setLoggedInUser(user);
                 return true;
             }
             return false;
         });
 
-        if (correctLogin) {
+        if (instantLogin || correctLogin) {
             MainFXMLController.setMainFXMLChild("/dashboard/dashboard.fxml");
         } else {
             vboxLogin.setDisable(true);

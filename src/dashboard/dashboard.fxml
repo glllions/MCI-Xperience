@@ -31,19 +31,15 @@
                         <VBox alignment="CENTER">
                             <children>
                                 <Label text="Eingeloggt als:" />
-                                <TextField fx:id="textFieldUsername" editable="false" text="Username" />
+                                <TextField fx:id="textFieldUsername" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="175.0" text="Username" />
                             </children>
                         </VBox>
                     </children>
                 </HBox>
             <Separator prefWidth="200.0" />
-            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+            <StackPane alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                <children>
-                  <StackPane fx:id="stackPaneContent" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                     <StackPane.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="70.0" />
-                     </StackPane.margin></StackPane>
-                  <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                  <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0">
                      <children>
                         <VBox fx:id="vBoxNavigatorComplete" maxHeight="-Infinity" spacing="10.0" style="-fx-border-image-width: 1; -fx-background-color: white;">
                            <children>
@@ -84,13 +80,48 @@
                               </VBox>
                            </children>
                         </VBox>
-                        <HBox alignment="TOP_RIGHT" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                        <StackPane fx:id="stackPaneContent" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                            <children>
-                              <TextField fx:id="textFieldSearch" maxWidth="200.0" promptText="Suche..." />
-                           </children>
-                        </HBox>
+                              <VBox maxHeight="-Infinity" maxWidth="-Infinity">
+                                 <children>
+                                    <HBox maxHeight="-Infinity" maxWidth="-Infinity">
+                                       <children>
+                                          <Label text="Hallo ">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="labelName">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text=",">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="20.0" />
+                                       </padding>
+                                    </HBox>
+                                    <Label text="Herzlich Willkommen">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="beim Tokensystem!">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children></StackPane>
                      </children>
                   </HBox>
+                  <TextField fx:id="textFieldSearch" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="175.0" promptText="Suche..." />
                </children>
                <padding>
                   <Insets top="10.0" />

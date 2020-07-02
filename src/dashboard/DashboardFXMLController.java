@@ -4,10 +4,12 @@ import application.MainFXMLController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import login.LoginData;
+import records.User;
 
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -32,6 +34,9 @@ public class DashboardFXMLController {
     @FXML
     private TextField textFieldUsername;
 
+    @FXML
+    private Label labelName;
+
     private static StackPane staticStackPaneContent;
 
     static void setDashboardFXMLChild(String path) {
@@ -46,7 +51,10 @@ public class DashboardFXMLController {
     @FXML
     private void initialize() {
         staticStackPaneContent = stackPaneContent;
-        textFieldUsername.setText(LoginData.getLoggedInUser().getName());
+
+        User loggedInUser = LoginData.getLoggedInUser();
+        textFieldUsername.setText(loggedInUser.getUsername());
+        labelName.setText(loggedInUser.getPerson().preNameProperty().getValue() + " " + loggedInUser.getPerson().lastNameProperty().getValue());
         switchNavigator();
     }
 

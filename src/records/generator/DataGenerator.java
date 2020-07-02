@@ -1,4 +1,9 @@
-package records;
+package records.generator;
+
+import records.Building;
+import records.Person;
+import records.Role;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -50,20 +55,19 @@ public class DataGenerator {
 
 
     public int createRandomRoomNumber(){
-        int number = random.nextInt(100);
+        int number = random.nextInt(4000);
         return number;
     }
 
-    public String createRandomRoomName(){
-        String pname = new String();
-        return pname;
+    public Building getRandomBuilding(){
+        Building randomBuilding = Building.values()[random.nextInt(Building.values().length)];
+        return randomBuilding;
     }
 
-    public User getMeSomeRandomDozent(){
+    public Person getMeSomeRandomDozent(){
         Name name = new Name(getMeSomeRandomNames().getForename(), getMeSomeRandomNames().getSurename());
-        String pname=("Prof."+ name.getForename()+name.getSurename());
-        User user = new User(pname,"123");
-        return user;
+        Person person = new Person(name.getSurename(), name.getForename(), 123, Role.DOZENT);
+        return person;
     }
 
 

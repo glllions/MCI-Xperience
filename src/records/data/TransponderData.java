@@ -1,15 +1,11 @@
-package dashboard.transponders;
+package records.data;
 
 import records.Transponder;
-import records.User;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class TransponderData {
-
-    //private static Transponder transponder1 = new Transponder();
-
 
     private static List<Transponder> transponders = Arrays.asList(
 
@@ -24,5 +20,7 @@ public class TransponderData {
 
     );
 
-
+    public static List<Transponder> getTransponders() {
+        return transponders;
+    }
 }

@@ -1,24 +1,25 @@
 package records;
 
-
-import java.util.List;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Transponder {
 
-    private String name;
-    private boolean status;
+    private StringProperty nameProperty = new SimpleStringProperty();
+    private BooleanProperty statusProperty = new SimpleBooleanProperty();
 
-    public Transponder (String name, boolean status){
-        this.name = name;
-        this.status = status;
+    public Transponder(String name, boolean status) {
+        this.nameProperty.setValue(name);
+        this.statusProperty.setValue(status);
     }
 
-    public String getName() {
-        return name;
+    public StringProperty nameProperty() {
+        return nameProperty;
     }
 
-    public Boolean getStatus() {
-        return status;
+    public BooleanProperty statusProperty() {
+        return statusProperty;
     }
-
 }

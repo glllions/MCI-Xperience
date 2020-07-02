@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import records.DataGenerator;
+import records.generator.DataGenerator;
 
 
 public class Main extends Application {
