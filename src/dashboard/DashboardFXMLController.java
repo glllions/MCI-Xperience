@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import login.LoginData;
@@ -54,8 +55,14 @@ public class DashboardFXMLController {
 
         User loggedInUser = LoginData.getLoggedInUser();
         textFieldUsername.setText(loggedInUser.getUsername());
-        labelName.setText(loggedInUser.getPerson().preNameProperty().getValue() + " " + loggedInUser.getPerson().lastNameProperty().getValue());
+        labelName.setText(loggedInUser.getPerson().toString());
         switchNavigator();
+
+        root.setOnKeyPressed(event -> {
+            if (event.isControlDown() && event.getCode() == KeyCode.ENTER) {
+                simulateScan();
+            }
+        });
     }
 
     @FXML
@@ -90,5 +97,9 @@ public class DashboardFXMLController {
             vBoxNavigatorComplete.getChildren().add(vBoxNavigator);
             vBoxNavigatorComplete.setBorder(new Border(new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         }
+    }
+
+    private void simulateScan() {
+
     }
 }

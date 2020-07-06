@@ -2,12 +2,13 @@ package records.data;
 
 import records.Transponder;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class TransponderData {
 
-    private static List<Transponder> transponders = Arrays.asList(
+    private static List<Transponder> transponders = new ArrayList(Arrays.asList(
 
             new Transponder("TXXXA", true),
             new Transponder("TXXXB", false),
@@ -18,7 +19,7 @@ public class TransponderData {
             new Transponder("TXXXY", false),
             new Transponder("TXXXZ", true)
 
-    );
+    ));
 
     public static List<Transponder> getTransponders() {
         return transponders;

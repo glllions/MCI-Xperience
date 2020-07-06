@@ -118,7 +118,10 @@
                                     </Label>
                                  </children>
                               </VBox>
-                           </children></StackPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding></StackPane>
                      </children>
                   </HBox>
                   <TextField fx:id="textFieldSearch" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="175.0" promptText="Suche..." />
