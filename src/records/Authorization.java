@@ -32,6 +32,7 @@ public class Authorization {
     }
 
     private void link() {
+        System.out.println("Authorization: " + personProperty.getValue() + " GMID: " + personProperty.getValue().gmidProperty().getValue() + " ||  " + roomProperty.getValue().numberProperty().getValue());
         personProperty.getValue().authorizationsProperty().add(this);
         roomProperty.getValue().authorizationsProperty().add(this);
     }

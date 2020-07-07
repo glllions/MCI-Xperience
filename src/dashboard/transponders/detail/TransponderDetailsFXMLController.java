@@ -115,6 +115,9 @@ public class TransponderDetailsFXMLController {
         tableViewLastActivities.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         tableViewLastActivities.getItems().addAll(currentTransponder.lastActivitiesProperty());
+
+        tableViewLastActivities.getSortOrder().add(columnBegin);
+        tableViewLastActivities.sort();
     }
 
     private void initLabels() {

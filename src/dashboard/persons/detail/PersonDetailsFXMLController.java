@@ -6,6 +6,7 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 import records.*;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class PersonDetailsFXMLController {
@@ -79,6 +80,28 @@ public class PersonDetailsFXMLController {
         columnBegin.setCellValueFactory(param -> param.getValue().beginDateProperty());
         columnEnd.setCellValueFactory(param -> param.getValue().endDateProperty());
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy - hh:mm");
+
+        Callback<TableColumn<Lending, Date>, TableCell<Lending, Date>> callbackDateCell = new Callback<TableColumn<Lending, Date>, TableCell<Lending, Date>>() {
+            @Override
+            public TableCell<Lending, Date> call(TableColumn<Lending, Date> param) {
+                return new TableCell<Lending, Date>() {
+                    @Override
+                    protected void updateItem(Date item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null && !empty) {
+                            setText(dateFormat.format(item));
+                        } else {
+                            setText(null);
+                        }
+                    }
+                };
+            }
+        };
+
+        columnBegin.setCellFactory(callbackDateCell);
+        columnEnd.setCellFactory(callbackDateCell);
+
         columnTransponder.setSortable(true);
         columnBegin.setSortable(true);
         columnEnd.setSortable(true);
@@ -88,6 +111,9 @@ public class PersonDetailsFXMLController {
         tableViewLastLendings.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         tableViewLastLendings.getItems().addAll(currentPerson.lastLendingsProperty());
+
+        tableViewLastLendings.getSortOrder().add(columnBegin);
+        tableViewLastLendings.sort();
     }
 
     private void initLabels() {

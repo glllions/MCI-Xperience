@@ -24,6 +24,7 @@ public class TransponderRoomLinking {
     }
 
     private void link() {
+        System.out.println("TransponderRoomLinking: " + transponderProperty.getValue().nameProperty().getValue() + "  ||  " + roomProperty.getValue().numberProperty().getValue());
         transponderProperty.getValue().linkingsProperty().add(this);
         roomProperty.getValue().linkingsProperty().add(this);
     }

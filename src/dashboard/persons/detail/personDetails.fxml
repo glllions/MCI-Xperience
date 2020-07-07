@@ -20,7 +20,7 @@
    <children>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0">
          <children>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="NEVER">
                <children>
                   <Label fx:id="labelName" text="Person">
                      <font>
@@ -84,17 +84,17 @@
                   </HBox>
                </children>
             </VBox>
-            <TitledPane text="Berechtigungen">
+            <TitledPane text="Berechtigungen" VBox.vgrow="ALWAYS">
                <content>
-                  <ListView fx:id="listViewAuthorizations" maxWidth="1.7976931348623157E308" prefHeight="100.0" />
+                  <ListView fx:id="listViewAuthorizations" maxHeight="170.0" maxWidth="1.7976931348623157E308" />
                </content>
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </TitledPane>
-            <TitledPane text="Zuletzt ausgeliehene Transponder">
+            <TitledPane text="Zuletzt ausgeliehene Transponder" VBox.vgrow="ALWAYS">
                <content>
-                  <TableView fx:id="tableViewLastLendings" maxWidth="1.7976931348623157E308" prefHeight="100.0">
+                  <TableView fx:id="tableViewLastLendings" maxHeight="170.0" maxWidth="1.7976931348623157E308">
                      <columns>
                         <TableColumn prefWidth="75.0" text="C1" />
                         <TableColumn prefWidth="75.0" text="C2" />

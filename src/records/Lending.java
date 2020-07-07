@@ -44,7 +44,10 @@ public class Lending {
     }
 
     private void link() {
+        System.out.println("Lending: " + personProperty.getValue() + " GMID: " + personProperty.getValue().gmidProperty().getValue() + " ||  " + transponderProperty.getValue().nameProperty().getValue());
         personProperty.getValue().lendingsProperty().add(this);
         transponderProperty.getValue().lendingsProperty().add(this);
+        transponderProperty.getValue().linkingsProperty()
+                .forEach(transponderRoomLinking -> transponderRoomLinking.roomProperty().getValue().lendingsProperty().add(Lending.this));
     }
 }

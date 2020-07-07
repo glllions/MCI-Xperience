@@ -103,6 +103,9 @@ public class RoomDetailsFXMLController {
         tableViewTransponders.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         tableViewTransponders.getItems().addAll(currentRoom.linkingsProperty());
+
+        tableViewTransponders.getSortOrder().addAll(columnStatus, columnName);
+        tableViewTransponders.sort();
     }
 
     private void initTableViewLastActivities() {
@@ -129,6 +132,9 @@ public class RoomDetailsFXMLController {
         tableViewLastActivities.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         tableViewLastActivities.getItems().addAll(currentRoom.lastActivitiesProperty());
+
+        tableViewLastActivities.getSortOrder().add(columnBegin);
+        tableViewLastActivities.sort();
     }
 
     private void initLabels() {

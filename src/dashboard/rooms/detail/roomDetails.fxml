@@ -59,7 +59,7 @@
             </VBox>
             <TitledPane text="Raumverwalter">
                <content>
-                  <ListView fx:id="listViewRoomManagers" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="100.0" />
+                  <ListView fx:id="listViewRoomManagers" maxHeight="170.0" maxWidth="1.7976931348623157E308" />
                </content>
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -67,7 +67,7 @@
             </TitledPane>
             <TitledPane text="Verknüpfte Transponder">
                <content>
-                  <TableView fx:id="tableViewTransponders" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="100.0">
+                  <TableView fx:id="tableViewTransponders" maxHeight="170.0" maxWidth="1.7976931348623157E308">
                      <columns>
                         <TableColumn prefWidth="75.0" text="C1" />
                         <TableColumn prefWidth="75.0" text="C2" />
@@ -80,7 +80,7 @@
             </TitledPane>
             <TitledPane text="Letzte Aktivitäten">
                <content>
-                  <TableView fx:id="tableViewLastActivities" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="100.0">
+                  <TableView fx:id="tableViewLastActivities" maxHeight="170.0" maxWidth="1.7976931348623157E308">
                      <columns>
                         <TableColumn prefWidth="75.0" text="C1" />
                         <TableColumn prefWidth="75.0" text="C2" />
