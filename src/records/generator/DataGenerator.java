@@ -40,7 +40,7 @@ public class DataGenerator {
                 .collect(Collectors.toList());
 
         RoomData.getRooms().forEach(room -> {
-            int nextInt = random.nextInt(managers.size());
+            int nextInt = nextPositiveInt(managers.size());
             room.roomManagersProperty().add(managers.get(nextInt));
             if (nextInt != 0 && random.nextBoolean()) {
                 room.roomManagersProperty().add(managers.get(nextInt - 1));
@@ -49,19 +49,29 @@ public class DataGenerator {
 
     }
 
+    private int nextPositiveInt() {
+        return Math.abs(random.nextInt());
+    }
+
+    private int nextPositiveInt(int bound) {
+        return Math.abs(random.nextInt(bound));
+    }
+
     private void linkRandomLendings() {
         for (int i = 0; i < PersonData.getPersons().size() * 3; i++) {
-            Person person = PersonData.getPersons().get(random.nextInt(PersonData.getPersons().size()));
+            Person person = PersonData.getPersons().get(nextPositiveInt(PersonData.getPersons().size()));
 
             if (!person.authorizationsProperty().isEmpty()) {
-                Authorization authorization = person.authorizationsProperty().get(random.nextInt(person.authorizationsProperty().size()));
+                Authorization authorization = person.authorizationsProperty().get(nextPositiveInt(person.authorizationsProperty().size()));
                 ObservableList<TransponderRoomLinking> transponderRoomLinkings = authorization.roomProperty().getValue().linkingsProperty();
                 if (!transponderRoomLinkings.isEmpty()) {
-                    Transponder transponder = transponderRoomLinkings.get(random.nextInt(transponderRoomLinkings.size())).transponderProperty().getValue();
-                    Lending lending = new Lending(person, transponder, new Date(System.currentTimeMillis() - random.nextInt()));
+                    Transponder transponder = transponderRoomLinkings.get(nextPositiveInt(transponderRoomLinkings.size())).transponderProperty().getValue();
 
+                    long beginTime = System.currentTimeMillis() - nextPositiveInt();
                     if (random.nextBoolean()) {
-                        lending.endDateProperty().setValue(new Date(lending.beginDateProperty().getValue().getTime() + random.nextInt()));
+                        new Lending(person, transponder, new Date(beginTime), new Date(beginTime + nextPositiveInt()));
+                    } else {
+                        new Lending(person, transponder, new Date(beginTime));
                     }
                 }
             }
@@ -71,19 +81,17 @@ public class DataGenerator {
     private void linkRandomAuthorizations() {
         List<Person> persons = new ArrayList(PersonData.getPersons());
 
-        int amount = persons.size() - random.nextInt(persons.size() / 2);
-
-        for (int i = 0; i < amount; i++) {
-            Person person = persons.get(random.nextInt(persons.size()));
+        for (int i = 0; i < persons.size(); i++) {
+            Person person = persons.get(nextPositiveInt(persons.size()));
             persons.remove(person);
 
-            int amountRooms = random.nextInt(5);
+            int amountRooms = nextPositiveInt(5);
             List<Room> used = new ArrayList();
             for (int j = 0; j < amountRooms; j++) {
-                Room room = RoomData.getRooms().get(random.nextInt(RoomData.getRooms().size()));
+                Room room = RoomData.getRooms().get(nextPositiveInt(RoomData.getRooms().size()));
                 if (!used.contains(room)) {
                     used.add(room);
-                    new Authorization(person, room, new Date(System.currentTimeMillis() + random.nextInt()));
+                    new Authorization(person, room, new Date(System.currentTimeMillis() + nextPositiveInt()));
                 }
             }
         }
@@ -91,10 +99,10 @@ public class DataGenerator {
 
     private void linkRandomTranspondersAndRooms() {
         RoomData.getRooms().forEach(room -> {
-            int amountTransponders = random.nextInt(3);
+            int amountTransponders = nextPositiveInt(3);
             List<Transponder> used = new ArrayList();
             for (int j = 0; j < amountTransponders; j++) {
-                Transponder transponder = TransponderData.getTransponders().get(random.nextInt(TransponderData.getTransponders().size()));
+                Transponder transponder = TransponderData.getTransponders().get(nextPositiveInt(TransponderData.getTransponders().size()));
                 if (!used.contains(transponder)) {
                     used.add(transponder);
                     new TransponderRoomLinking(transponder, room);
@@ -152,8 +160,8 @@ public class DataGenerator {
      */
     public Name getMeSomeRandomNames() {
         Random random = new Random();
-        String randomForeName = forenames.get(random.nextInt(forenames.size()));
-        String randomSurename = surenames.get(random.nextInt(surenames.size()));
+        String randomForeName = forenames.get(nextPositiveInt(forenames.size()));
+        String randomSurename = surenames.get(nextPositiveInt(surenames.size()));
 
         return new Name(randomForeName, randomSurename);
     }
@@ -163,12 +171,12 @@ public class DataGenerator {
 
 
     public int createRandomRoomNumber() {
-        int number = random.nextInt(4000);
+        int number = nextPositiveInt(4000);
         return number;
     }
 
     public Building getRandomBuilding() {
-        Building randomBuilding = Building.values()[random.nextInt(Building.values().length)];
+        Building randomBuilding = Building.values()[nextPositiveInt(Building.values().length)];
         return randomBuilding;
     }
 
@@ -180,7 +188,7 @@ public class DataGenerator {
 
     public Person getRandomPerson() {
         Name name = new Name(getMeSomeRandomNames().getForename(), getMeSomeRandomNames().getSurename());
-        Role role = Role.values()[random.nextInt(Role.values().length)];
+        Role role = Role.values()[nextPositiveInt(Role.values().length)];
         Person person = new Person(name.getSurename(), name.getForename(), ++gmidCounter, role);
         if (role == Role.STUDENT) {
             person.matNrProperty().setValue(++matNrCounter);
@@ -196,9 +204,9 @@ public class DataGenerator {
     public Transponder getRandomTransponder() {
         StringBuilder name = new StringBuilder("T");
         for (int i = 0; i < 7; i++) {
-            name.append(transponderAlphabet[random.nextInt(transponderAlphabet.length)]);
+            name.append(transponderAlphabet[nextPositiveInt(transponderAlphabet.length)]);
         }
-        Transponder transponder = new Transponder(name.toString(), false);
+        Transponder transponder = new Transponder(name.toString(), true);
         return transponder;
     }
 

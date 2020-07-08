@@ -1,5 +1,6 @@
 package dashboard.rooms.detail;
 
+import dashboard.DateTableCellCallback;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -71,11 +72,11 @@ public class RoomDetailsFXMLController {
         tableViewTransponders.getColumns().clear();
 
         TableColumn<TransponderRoomLinking, String> columnName = new TableColumn("Name");
-        TableColumn<TransponderRoomLinking, Boolean> columnStatus = new TableColumn("Status");
+        TableColumn<TransponderRoomLinking, Boolean> columnState = new TableColumn("Status");
 
         columnName.setCellValueFactory(param -> param.getValue().transponderProperty().getValue().nameProperty());
-        columnStatus.setCellValueFactory(param -> param.getValue().transponderProperty().getValue().statusProperty());
-        columnStatus.setCellFactory(new Callback<TableColumn<TransponderRoomLinking, Boolean>, TableCell<TransponderRoomLinking, Boolean>>() {
+        columnState.setCellValueFactory(param -> param.getValue().transponderProperty().getValue().availableProperty());
+        columnState.setCellFactory(new Callback<TableColumn<TransponderRoomLinking, Boolean>, TableCell<TransponderRoomLinking, Boolean>>() {
             @Override
             public TableCell<TransponderRoomLinking, Boolean> call(TableColumn<TransponderRoomLinking, Boolean> param) {
                 return new TableCell<TransponderRoomLinking, Boolean>() {
@@ -96,15 +97,15 @@ public class RoomDetailsFXMLController {
         });
 
         columnName.setSortable(true);
-        columnStatus.setSortable(true);
+        columnState.setSortable(true);
 
-        tableViewTransponders.getColumns().addAll(columnName, columnStatus);
+        tableViewTransponders.getColumns().addAll(columnName, columnState);
 
         tableViewTransponders.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         tableViewTransponders.getItems().addAll(currentRoom.linkingsProperty());
 
-        tableViewTransponders.getSortOrder().addAll(columnStatus, columnName);
+        tableViewTransponders.getSortOrder().addAll(columnState, columnName);
         tableViewTransponders.sort();
     }
 
@@ -121,6 +122,9 @@ public class RoomDetailsFXMLController {
         columnTransponder.setCellValueFactory(param -> param.getValue().transponderProperty());
         columnBegin.setCellValueFactory(param -> param.getValue().beginDateProperty());
         columnEnd.setCellValueFactory(param -> param.getValue().endDateProperty());
+
+        columnBegin.setCellFactory(new DateTableCellCallback<Lending>());
+        columnEnd.setCellFactory(new DateTableCellCallback<Lending>());
 
         columnPerson.setSortable(true);
         columnTransponder.setSortable(true);

@@ -55,7 +55,6 @@ public class LoginFXMLController {
         }
     }
 
-
     @FXML
     private void handleButtonLoginPopup(ActionEvent event) {
         vboxLogin.setDisable(false);

@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class Transponder {
 
     private StringProperty nameProperty = new SimpleStringProperty();
-    private BooleanProperty statusProperty = new SimpleBooleanProperty();
+    private BooleanProperty availableProperty = new SimpleBooleanProperty();
     private ObservableList<TransponderRoomLinking> linkingsProperty = FXCollections.observableArrayList();
     private ObservableList<Lending> lendingsProperty = FXCollections.observableArrayList();
 
@@ -21,19 +21,19 @@ public class Transponder {
      * Transponder
      *
      * @param name Name/Nummer
-     * @param status Status: Verfügbar/Verliehen
+     * @param available Status: Verfügbar/Verliehen
      */
-    public Transponder(String name, boolean status) {
+    public Transponder(String name, boolean available) {
         this.nameProperty.setValue(name);
-        this.statusProperty.setValue(status);
+        this.availableProperty.setValue(available);
     }
 
     public StringProperty nameProperty() {
         return nameProperty;
     }
 
-    public BooleanProperty statusProperty() {
-        return statusProperty;
+    public BooleanProperty availableProperty() {
+        return availableProperty;
     }
 
     public ObservableList<TransponderRoomLinking> linkingsProperty() {

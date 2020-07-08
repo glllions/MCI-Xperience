@@ -1,8 +1,12 @@
 package dashboard.transponders.detail;
 
+import dashboard.DateTableCellCallback;
+import dashboard.dialogs.lendingConfirm.LendingConfirmationDialog;
+import dashboard.dialogs.scannedPerson.ScannedPersonDialog;
+import dashboard.transponders.TranspondersFXMLController;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -33,6 +37,9 @@ public class TransponderDetailsFXMLController {
     @FXML
     private TableView<Lending> tableViewLastActivities;
 
+    @FXML
+    private Button buttonLend;
+
     private static Transponder currentTransponder;
 
     public static void setCurrentTransponder(Transponder currentTransponder) {
@@ -45,6 +52,7 @@ public class TransponderDetailsFXMLController {
         initListViewLinkedRooms();
         initTableViewAuthorizedPersons();
         initTableViewLastActivities();
+        buttonLend.disableProperty().bind(currentTransponder.availableProperty().not());
     }
 
     private void initListViewLinkedRooms() {
@@ -80,6 +88,8 @@ public class TransponderDetailsFXMLController {
         columnName.setCellValueFactory(param -> param.getValue().personProperty());
         columnEndDate.setCellValueFactory(param -> param.getValue().endDateProperty());
 
+        columnEndDate.setCellFactory(new DateTableCellCallback<Authorization>());
+
         columnName.setSortable(true);
         columnEndDate.setSortable(true);
 
@@ -106,6 +116,9 @@ public class TransponderDetailsFXMLController {
         columnBegin.setCellValueFactory(param -> param.getValue().beginDateProperty());
         columnEnd.setCellValueFactory(param -> param.getValue().endDateProperty());
 
+        columnBegin.setCellFactory(new DateTableCellCallback<Lending>());
+        columnEnd.setCellFactory(new DateTableCellCallback<Lending>());
+
         columnPerson.setSortable(true);
         columnBegin.setSortable(true);
         columnEnd.setSortable(true);
@@ -123,9 +136,21 @@ public class TransponderDetailsFXMLController {
     private void initLabels() {
         labelName.setText(String.valueOf(currentTransponder.nameProperty().getValue()));
         paneImageStatus.getChildren().clear();
-        ImageView imageView = currentTransponder.statusProperty().getValue() ? StatusImages.getInstance().getGREEN() : StatusImages.getInstance().getRED();
+        ImageView imageView = currentTransponder.availableProperty().getValue() ? StatusImages.getInstance().getGREEN() : StatusImages.getInstance().getRED();
         imageView.setFitWidth(25);
         imageView.setFitHeight(25);
         paneImageStatus.getChildren().add(imageView);
+    }
+
+    @FXML
+    private void handleButtonLend(ActionEvent event) {
+        if (TranspondersFXMLController.CHOOSE_MODE_PERSON != null) {
+            LendingConfirmationDialog confirmDialog = new LendingConfirmationDialog(TranspondersFXMLController.CHOOSE_MODE_PERSON, currentTransponder);
+            confirmDialog.showAndWait();
+            TranspondersFXMLController.CHOOSE_MODE_PERSON = null;
+        } else {
+            ScannedPersonDialog scannedPersonDialog = new ScannedPersonDialog(null, currentTransponder);
+            scannedPersonDialog.showAndWait();
+        }
     }
 }

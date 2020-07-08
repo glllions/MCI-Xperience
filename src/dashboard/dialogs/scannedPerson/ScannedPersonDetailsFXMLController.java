@@ -1,16 +1,18 @@
-package dashboard.persons.detail;
+package dashboard.dialogs.scannedPerson;
 
 import dashboard.DateTableCellCallback;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
-import records.*;
+import records.Authorization;
+import records.Lending;
+import records.Person;
+import records.Transponder;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class PersonDetailsFXMLController {
+public class ScannedPersonDetailsFXMLController {
 
     @FXML
     private StackPane root;
@@ -36,7 +38,7 @@ public class PersonDetailsFXMLController {
     private static Person currentPerson;
 
     public static void setCurrentPerson(Person currentPerson) {
-        PersonDetailsFXMLController.currentPerson = currentPerson;
+        ScannedPersonDetailsFXMLController.currentPerson = currentPerson;
     }
 
     @FXML

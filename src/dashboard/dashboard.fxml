@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.192" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardFXMLController">
+<StackPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardFXMLController">
     <children>
       <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0">
          <children>
@@ -41,13 +41,13 @@
                <children>
                   <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0">
                      <children>
-                        <VBox fx:id="vBoxNavigatorComplete" maxHeight="-Infinity" spacing="10.0" style="-fx-border-image-width: 1; -fx-background-color: white;">
+                        <VBox fx:id="vBoxNavigatorComplete" maxHeight="1.7976931348623157E308" spacing="10.0" style="-fx-border-image-width: 1;">
                            <children>
                               <HBox focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0" VBox.vgrow="NEVER">
                                  <children>
                                     <Button fx:id="buttonBack" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonBack" prefHeight="54.0" prefWidth="54.0" HBox.hgrow="NEVER">
                                        <graphic>
-                                          <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView disable="true" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../resource/back.png" />
                                              </image>
@@ -124,7 +124,7 @@
                            </padding></StackPane>
                      </children>
                   </HBox>
-                  <TextField fx:id="textFieldSearch" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="175.0" promptText="Suche..." />
+                  <TextField fx:id="textFieldSearch" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="175.0" promptText="Suche..." />
                </children>
                <padding>
                   <Insets top="10.0" />
