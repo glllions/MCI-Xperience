@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 
 public class LoginFXMLController {
 
-    private boolean instantLogin = true;
+    private boolean instantLogin = false;
 
     @FXML
     private StackPane root;
