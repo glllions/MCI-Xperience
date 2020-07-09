@@ -9,14 +9,14 @@
 
 <StackPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.192" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.rooms.RoomsFXMLController">
    <children>
-      <VBox prefHeight="200.0" prefWidth="100.0">
+      <VBox maxWidth="1.7976931348623157E308">
          <children>
             <Label text="Räume">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <TableView fx:id="tableViewRooms" prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="tableViewRooms" maxWidth="1.7976931348623157E308" prefHeight="400.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="C1" />
                 <TableColumn prefWidth="75.0" text="C2" />
